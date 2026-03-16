@@ -8,7 +8,15 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
 
-        Map<String, String> inventario = MapFactory.crearMap();
+        System.out.println("Seleccione implementación de Map");
+        System.out.println("1 HashMap");
+        System.out.println("2 TreeMap");
+        System.out.println("3 LinkedHashMap");
+
+        int tipo = scanner.nextInt();
+        scanner.nextLine();
+
+        Map<String, String> inventario = MapFactory.crearMap(tipo);
         Map<String, Integer> coleccionUsuario = new HashMap<>();
 
         InventarioManager manager = new InventarioManager();
@@ -75,8 +83,15 @@ public class Main {
                     break;
 
                 case 5:
+                    long inicio = System.nanoTime();
 
                     manager.mostrarInventario(inventario);
+
+                    long fin = System.nanoTime();
+
+                    long tiempo = fin - inicio;
+
+                    System.out.println("Tiempo de ejecución: " + tiempo + " nanosegundos");
 
                     break;
 
